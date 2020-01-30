@@ -23,24 +23,21 @@ class Board extends React.Component {
         );
     }
 
+    renderLineOfSquares(size, row) {
+        const columns = [...Array(size).keys()];
+        return (
+            <div className="board-row">
+                {columns.map(column => this.renderSquare((row * size) + column))}
+            </div>
+        );
+    }
+
     render() {
+        const size = 3;
+        const rows = [...Array(size).keys()];
         return (
             <div>
-                <div className="board-row">
-                    {this.renderSquare(0)}
-                    {this.renderSquare(1)}
-                    {this.renderSquare(2)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(3)}
-                    {this.renderSquare(4)}
-                    {this.renderSquare(5)}
-                </div>
-                <div className="board-row">
-                    {this.renderSquare(6)}
-                    {this.renderSquare(7)}
-                    {this.renderSquare(8)}
-                </div>
+                {rows.map(row => this.renderLineOfSquares(size, row))}
             </div>
         );
     }
